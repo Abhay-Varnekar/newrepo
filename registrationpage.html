@@ -2,70 +2,111 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Registration Form</title>
+    <title>User Registration</title>
 </head>
-<body style="background-color:#f2f2f2; font-family:Arial, sans-serif;">
+<body style="
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg, #74ebd5, #9face6);
+    font-family:Verdana, sans-serif;
+">
 
     <center>
         <form style="
-            background-color:white;
-            width:400px;
-            padding:25px;
-            margin-top:50px;
-            border-radius:10px;
-            box-shadow:0px 0px 10px gray;
+            background-color:#ffffff;
+            width:420px;
+            margin-top:60px;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 15px 25px rgba(0,0,0,0.3);
         ">
 
-            <h2 style="color:#333;">Registration Form</h2>
-            <hr><br>
+            <div style="
+                background-color:#6c63ff;
+                padding:15px;
+                border-radius:10px;
+                color:white;
+                margin-bottom:20px;
+            ">
+                <h2 style="margin:0;">Create Account</h2>
+                <p style="margin:5px 0 0; font-size:14px;">Register to get started</p>
+            </div>
 
-            <label>Full Name</label><br>
-            <input type="text" placeholder="Enter your name" required
-                style="width:90%; padding:8px; margin:8px;"><br><br>
+            <label><b>Full Name</b></label><br>
+            <input type="text" placeholder="Your full name" required
+                style="
+                width:95%;
+                padding:12px;
+                margin:10px 0;
+                border-radius:8px;
+                border:1px solid #ccc;
+                "><br>
 
-            <label>Email</label><br>
-            <input type="email" placeholder="Enter your email" required
-                style="width:90%; padding:8px; margin:8px;"><br><br>
+            <label><b>Email Address</b></label><br>
+            <input type="email" placeholder="example@email.com" required
+                style="
+                width:95%;
+                padding:12px;
+                margin:10px 0;
+                border-radius:8px;
+                border:1px solid #ccc;
+                "><br>
 
-            <label>Password</label><br>
-            <input type="password" placeholder="Enter password" required
-                style="width:90%; padding:8px; margin:8px;"><br><br>
+            <label><b>Password</b></label><br>
+            <input type="password" placeholder="Create password" required
+                style="
+                width:95%;
+                padding:12px;
+                margin:10px 0;
+                border-radius:8px;
+                border:1px solid #ccc;
+                "><br>
 
-            <label>Gender</label><br>
+            <label><b>Gender</b></label><br>
             <input type="radio" name="gender"> Male
             <input type="radio" name="gender"> Female
             <input type="radio" name="gender"> Other
             <br><br>
 
-            <label>Course</label><br>
-            <select style="width:95%; padding:8px;">
-                <option>Select course</option>
+            <label><b>Department</b></label><br>
+            <select style="
+                width:100%;
+                padding:12px;
+                border-radius:8px;
+                border:1px solid #ccc;
+                margin-bottom:15px;
+            ">
+                <option>Select department</option>
                 <option>Computer Science</option>
                 <option>Information Technology</option>
                 <option>Electronics</option>
                 <option>Mechanical</option>
-            </select><br><br>
+            </select>
 
-            <input type="checkbox"> I agree to the terms and conditions
+            <input type="checkbox"> I accept the terms & conditions
             <br><br>
 
-            <input type="submit" value="Register"
+            <input type="submit" value="Sign Up"
                 style="
-                background-color:#4CAF50;
+                width:48%;
+                padding:12px;
+                background-color:#6c63ff;
                 color:white;
-                padding:10px 20px;
                 border:none;
-                border-radius:5px;
+                border-radius:8px;
+                font-size:16px;
                 cursor:pointer;
                 ">
 
-            <input type="reset" value="Reset"
+            <input type="reset" value="Clear"
                 style="
-                background-color:#f44336;
+                width:48%;
+                padding:12px;
+                background-color:#ff6b6b;
                 color:white;
-                padding:10px 20px;
                 border:none;
-                border-radius:5px;
+                border-radius:8px;
+                font-size:16px;
                 cursor:pointer;
                 ">
         </form>

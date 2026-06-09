@@ -1,50 +1,96 @@
-import { Linkedin, Twitter, ArrowRight } from 'lucide-react'
+import { Linkedin, Twitter } from 'lucide-react'
 
 const SPEAKERS = [
-  { seed: 'spk-ceo-m', name: 'Rajesh Sharma', role: 'CEO, TechVista India' },
-  { seed: 'spk-chro-f', name: 'Priya Mehta', role: 'CHRO, GlobalEdge Corp' },
-  { seed: 'spk-founder-m2', name: 'Arjun Kapoor', role: 'Founder, NexaVentures' },
-  { seed: 'spk-policy-f2', name: 'Dr. Kavitha Rao', role: 'Policy Advisor, NITI Aayog' },
-  { seed: 'spk-edu-m3', name: 'Prof. Anil Desai', role: 'Director, IIM Bangalore' },
-  { seed: 'spk-cfo-m4', name: 'Siddharth Jain', role: 'CFO, NovaTech Industries' },
-  { seed: 'spk-cto-f5', name: 'Ananya Reddy', role: 'CTO, Elevate Group' },
-  { seed: 'spk-vp-m6', name: 'Mohit Patel', role: 'VP Strategy, FinEdge Solutions' },
-]
-
-function SpeakerCard({ speaker, index }) {
-  return (
-    <div className="group flex-shrink-0 w-44 sm:w-52 md:w-60 lg:w-72 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer relative">
-      <img
-        src={`https://picsum.photos/seed/${speaker.seed}/400/530.jpg`}
-        alt={speaker.name}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        loading="lazy"
-      />
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-      {/* Info */}
-      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-        <h4 className="text-xs sm:text-sm font-semibold text-white truncate">{speaker.name}</h4>
-        <p className="text-[10px] sm:text-xs text-white/60 truncate">{speaker.role}</p>
-      </div>
-      {/* Hover socials */}
-      <div className="absolute top-3 right-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
-        <a href="#" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-gb-500 transition-colors">
-          <Linkedin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
-        </a>
-        <a href="#" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-gb-500 transition-colors">
-          <Twitter className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
-        </a>
-      </div>
-    </div>
-  )
-}
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  {
+  image: '/images/speakers/BWspeaker.png',
+  name: 'Karthik M',
+  designation: 'Head Sales and Marketing',
+  company: 'Concorde.in',
+  bio: 'A Success Driven Sales and Marketing professional with 20+ years of experience in decisive roles across multiple geographies in India with a clear distinction of being an Enterprise Business Leader managing large teams for over a decade currently associated with Tata Realty. A turnaround specialist devising strategies for Sales / Marketing/Revenue Generation, Fund Raising, Valuations, Product Marketing (Business Development), and Financial Closures for Real Estate and Infrastructure sectors assisting both Domestic & International customers. Next-Gen Leader with an impressive track record of business growth, strong P&L, and enhanced organizational productivity and efficiency with a proven track record of consistently growing revenues and market share in a hyper-competitive market. Subject Matter Expert in formulating Sales Operations, Market Strategy, Marketing Management, Product Planning, and Business Development Strategy, penetrating new markets and major market expansion',
+  },
+  ];
+  
 
 export default function SpeakersSection() {
-  const doubled = [...SPEAKERS, ...SPEAKERS]
-
   return (
-    <section id="speakers" className="relative py-20 lg:py-28 bg-white overflow-hidden">
+    <section id="speakers" className="relative py-20 lg:py-28 bg-warm-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
@@ -58,45 +104,61 @@ export default function SpeakersSection() {
             </h2>
           </div>
           <a href="#" className="group flex items-center gap-2 text-sm font-medium text-gb-600 hover:text-gb-800 transition-colors">
-            View all speakers <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            View all speakers <span className="group-hover:translate-x-1 transition-transform">→</span>
           </a>
         </div>
-      </div>
 
-      {/* Infinite Scroll Slider */}
-      <div className="relative w-full mb-12">
-        <style>{`
-          @keyframes speaker-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .speaker-scroll {
-            animation: speaker-scroll 25s linear infinite;
-          }
-          .speaker-scroll:hover {
-            animation-play-state: paused;
-          }
-          .speaker-mask {
-            mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
-            -webkit-mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
-          }
-        `}</style>
-
-        <div className="speaker-mask w-full">
-          <div className="speaker-scroll flex gap-5 w-max">
-            {doubled.map((speaker, index) => (
-              <SpeakerCard
-                key={`${speaker.seed}-${index}`}
-                speaker={speaker}
-                index={index}
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {SPEAKERS.map((speaker) => (
+            <div key={speaker.seed} className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1" style={{ aspectRatio: '3/4' }}>
+              {/* Photo */}
+              <img
+                src={speaker.image}
+                alt={speaker.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
-            ))}
-          </div>
+
+              {/* Default gradient (bottom info) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent transition-opacity duration-500 group-hover:opacity-0" />
+
+              {/* Name overlay - default state */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 transition-all duration-500 group-hover:opacity-0">
+                <h4 className="text-3xl font-bold text-white leading-tight">{speaker.name}</h4>
+                <p className="text-[15px] text-gb-300 font-medium mt-0.5">{speaker.designation}</p>
+                <p className="text-[12px] text-white mt-0.5">{speaker.company}</p>
+              </div>
+
+              {/* Hover overlay with bio */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-5">
+                {/* Social icons top right */}
+                <div className="absolute top-4 right-4 flex items-center gap-2">
+                  <a href="#" className="w-8 h-8 rounded-lg bg-white/15 backdrop-blur-sm flex items-center justify-center hover:bg-gb-500 transition-all duration-300 translate-y-2 group-hover:translate-y-0 transition-transform">
+                    <Linkedin className="w-3.5 h-3.5 text-white" />
+                  </a>
+                  <a href="#" className="w-8 h-8 rounded-lg bg-white/15 backdrop-blur-sm flex items-center justify-center hover:bg-gb-500 transition-all duration-300 translate-y-2 group-hover:translate-y-0 transition-transform delay-75">
+                    <Twitter className="w-3.5 h-3.5 text-white" />
+                  </a>
+                </div>
+
+                {/* Bio content bottom */}
+                <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <h4 className="text-2xl font-bold text-white leading-tight">{speaker.name}</h4>
+                  <p className="text-[13px] text-gb-300 font-medium mt-0.5">{speaker.designation}</p>
+                  <p className="text-[12px] text-white mt-0.5">{speaker.company}</p>
+                  <div className="w-6 h-px bg-gb-500/50 my-3" />
+                  <p className="text-xs text-white/70 leading-relaxed line-clamp-4">{speaker.bio}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Fade edges */}
-        <div className="absolute top-0 left-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute top-0 right-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        {/* Hint */}
+        <p className="text-center text-xs text-neutral-300 mt-10">
+          Hover over any speaker to view their profile
+        </p>
       </div>
     </section>
   )

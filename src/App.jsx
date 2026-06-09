@@ -9,6 +9,7 @@ import PartnersSection from './components/PartnersSection'
 import ContactSection from './components/ContactSection'
 import NewsletterSection from './components/NewsletterSection'
 import Footer from './components/Footer'
+import PricingSection from './components/pricingsection'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
       <ImpactSection />
       <TestimonialsSection />
       <PartnersSection />
+      <PricingSection/>
       <ContactSection />
       <NewsletterSection />
       <Footer />

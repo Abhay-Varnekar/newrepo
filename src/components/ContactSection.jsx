@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Youtube } from 'lucide-react'
 
 const CONTACT_INFO = [
-  { icon: Mail, label: 'Email', value: 'connect@timesaspire.com' },
+  { icon: Mail, label: 'Email', value: 'support@timesaspire.com' },
   { icon: Phone, label: 'Phone', value: '+91 98765 43210' },
   { icon: MapPin, label: 'Headquarters', value: 'Mumbai, Maharashtra, India' },
 ]
@@ -14,7 +14,7 @@ const SOCIALS = [
   { icon: Youtube },
 ]
 
-const INTEREST_OPTIONS = ['', 'Attending a Summit', 'Submitting a Nomination', 'Speaking Opportunity', 'Sponsorship', 'Partnership', 'Media / Press', 'Other']
+const INTEREST_OPTIONS = ['', 'Attending Summit', 'Submitting Award Nomination', 'Speaking Opportunity', 'Sponsorship / Partnership', 'Media / Press', 'Other']
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false)

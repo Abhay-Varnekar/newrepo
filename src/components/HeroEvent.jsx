@@ -19,7 +19,7 @@ export default function HeroEvent() {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src="public\images\South India Summit.png"
+          src="/images/South India Summit.png"
           alt="India CEO Summit"
           className="w-full h-full object-cover"
         />

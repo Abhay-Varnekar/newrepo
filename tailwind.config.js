@@ -27,6 +27,18 @@ export default {
           400: '#eed3a5',
           500: '#e4be82',
         },
+        razorpay: {
+          50: '#e0f2fe',
+          100: '#bae6fd',
+          200: '#7dd3fc',
+          300: '#38bdf8',
+          400: '#0ea5e9',
+          500: '#1d4ed8',
+          600: '#1e40af',
+          700: '#1e3a8a',
+          800: '#172554',
+          900: '#0f172a',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

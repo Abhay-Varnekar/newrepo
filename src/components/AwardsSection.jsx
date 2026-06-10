@@ -1,64 +1,139 @@
-import { Crown, Building2, Rocket, GraduationCap, HeartHandshake, Plus } from 'lucide-react'
+import {
+    Crown,
+    Building2,
+    Rocket,
+    GraduationCap,
+    HeartHandshake,
+    Mic,
+    Award,
+    ShieldCheck,
+    Globe,
+    Users,
+    ShoppingBag,
+    Factory,
+    HeartPulse,
+    MapPin
+} from 'lucide-react'
 
 const AWARDS = [
-  { icon: Crown, title: 'CEO of the Year', desc: 'Recognizing transformative CEOs driving exceptional growth, innovation, and stakeholder value.', winners: '50+', editions: '8', categories: '15+' },
-  { icon: Building2, title: 'Best Workplace Award', desc: 'Celebrating organizations that foster exceptional culture, well-being, and inclusive environments.', winners: '120+', editions: '6', categories: '20+' },
-  { icon: Rocket, title: 'Startup Innovation Award', desc: 'Honoring disruptive startups solving complex challenges with innovative, scalable solutions.', winners: '80+', editions: '5', categories: '10+' },
-  { icon: GraduationCap, title: 'Education Leadership Award', desc: 'Acknowledging educators and institutions driving transformative change in India\'s education landscape.', winners: '90+', editions: '4', categories: '12+' },
-  { icon: HeartHandshake, title: 'Social Impact Award', desc: 'Recognizing initiatives and leaders creating measurable social change and community impact.', winners: '60+', editions: '3', categories: '8+' },
+    {
+        icon: Crown,
+        title: 'PSU Leadership Excellence Award',
+        desc: 'Recognizing PSU leaders who have driven exceptional institutional growth and transformation.'
+    },
+    {
+        icon: Building2,
+        title: "People's Choice Best Workplaces",
+        desc: 'Celebrating organizations fostering exceptional culture and inclusive environments.'
+    },
+    {
+        icon: Rocket,
+        title: 'Startup Innovation Award',
+        desc: 'Honoring disruptive startups solving complex challenges with scalable solutions.'
+    },
+    {
+        icon: GraduationCap,
+        title: 'Education Leadership Award',
+        desc: "Acknowledging educators and institutions driving transformative change in India's education landscape."
+    }, {
+        icon: HeartHandshake,
+        title: 'Social Impact Award',
+        desc: 'Recognizing initiatives and leaders creating measurable social change.'
+    }, {
+        icon: Mic,
+        title: 'PSU Leadership & Governance Excellence',
+        desc: 'Recognizing public sector leaders driving impactful policy and governance reforms.'
+    }, {
+        icon: Award,
+        title: 'Business Leader of Excellence',
+        desc: 'Honoring CEOs driving exceptional growth, innovation, and stakeholder value.'
+    }, {
+        icon: ShieldCheck,
+        title: 'BFSI Leadership Award',
+        desc: 'Celebrating BFSI leaders shaping the future of Indian financial services.'
+    }, {
+        icon: Globe,
+        title: 'Global Expansion Award',
+        desc: 'Recognizing leaders with successful international business expansion strategies.'
+    }, {
+        icon: Users,
+        title: 'Most Influential Women Leaders',
+        desc: 'Celebrating women leaders who inspire change across industries.'
+    }, {
+        icon: ShoppingBag,
+        title: 'Retail & Real Estate Excellence',
+        desc: 'Honoring excellence in retail innovation and real estate development.'
+    }, {
+        icon: Factory,
+        title: 'Manufacturing & HSE Excellence',
+        desc: 'Recognizing manufacturing leaders for safety, quality and innovation.'
+    }, {
+        icon: HeartPulse,
+        title: 'CSR & Community Development Award',
+        desc: 'Recognizing meaningful CSR and community development initiatives.'
+    }, {
+        icon: MapPin,
+        title: 'Real Estate Excellence Award',
+        desc: 'Celebrating achievement in real estate development and urban transformation.'
+    }, {
+        icon: Building2,
+        title: 'IT & Digital Transformation Award',
+        desc: 'Recognizing digital transformation leaders in Indian enterprise.'
+    },
 ]
 
-function AwardCard({ award }) {
-  const Icon = award.icon
-  return (
-    <div className="group bg-white rounded-2xl border border-neutral-100 p-8 card-shadow hover:card-shadow-hover hover:border-gb-200 transition-all duration-500">
-      <div className="w-14 h-14 rounded-xl bg-gb-50 flex items-center justify-center mb-6 group-hover:bg-gb-100 transition-colors">
-        <Icon className="w-7 h-7 text-gb-600" />
-      </div>
-      <h3 className="text-lg font-bold text-neutral-900 mb-2">{award.title}</h3>
-      <p className="text-sm text-neutral-500 leading-relaxed mb-5">{award.desc}</p>
-      <div className="flex items-center gap-4 pt-5 border-t border-neutral-100">
-        <div className="text-center"><div className="text-lg font-bold text-gb-700">{award.winners}</div><div className="text-[10px] text-neutral-400 uppercase tracking-wider">Winners</div></div>
-        <div className="w-px h-8 bg-neutral-100" />
-        <div className="text-center"><div className="text-lg font-bold text-neutral-800">{award.editions}</div><div className="text-[10px] text-neutral-400 uppercase tracking-wider">Editions</div></div>
-        <div className="w-px h-8 bg-neutral-100" />
-        <div className="text-center"><div className="text-lg font-bold text-neutral-800">{award.categories}</div><div className="text-[10px] text-neutral-400 uppercase tracking-wider">Categories</div></div>
-      </div>
-    </div>
-  )
-}
-
 export default function AwardsSection() {
-  return (
-    <section id="awards" className="relative py-20 lg:py-28 bg-warm-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="text-gb-600 text-xs font-semibold tracking-[0.2em] uppercase">🏅 Recognition & Excellence</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-3">
-            Awards That <span className="text-gradient-gb">Define Excellence</span>
-          </h2>
-          <p className="max-w-2xl mx-auto text-neutral-500 text-lg leading-relaxed">
-            Our recognition programs honor outstanding leaders and organizations who are redefining success.
-          </p>
-        </div>
+    return (
+        <section id="awards" className="relative py-20 lg:py-28 bg-warm-50">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {AWARDS.map((award) => (
-            <AwardCard key={award.title} award={award} />
-          ))}
-          {/* Nominate CTA */}
-          <div className="group relative bg-gradient-to-br from-gb-50 to-warm-100 rounded-2xl border-2 border-dashed border-gb-300 hover:border-gb-500 p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-500 hover:from-gb-100 hover:to-warm-200">
-            <div className="w-14 h-14 rounded-full border-2 border-gb-400 flex items-center justify-center mb-4 group-hover:border-gb-600 group-hover:scale-110 transition-all duration-300 bg-white">
-              <Plus className="w-6 h-6 text-gb-600" />
+                {/* Header */}
+                <div className="text-center mb-14">
+                    <div className="inline-flex items-center gap-2 mb-3">
+                        <span className="text-gb-600 text-xs font-semibold tracking-[0.2em] uppercase">
+                            Recognition & Excellence
+                        </span>
+                    </div>
+
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-3">
+                        Awards That
+                        <span className="text-gradient-gb">Define Excellence</span>
+                    </h2>
+
+                    <p className="max-w-2xl mx-auto text-neutral-500 text-lg leading-relaxed">
+                        Our recognition programs honor outstanding leaders and organizations who are redefining success.
+                    </p>
+                </div>
+
+                {/* Awards Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5">
+                    {
+                    AWARDS.map((award) => {
+                        const Icon = award.icon
+                        return (
+                            <div key={
+                                    award.title
+                                }
+                                className="group bg-white rounded-2xl border border-neutral-100 p-5 lg:p-6 card-shadow hover:card-shadow-hover hover:border-gb-200 transition-all duration-500">
+                                <div className="w-12 h-12 rounded-xl bg-gb-50 flex items-center justify-center mb-4 group-hover:bg-gb-100 transition-colors">
+                                    <Icon className="w-6 h-6 text-gb-600"/>
+                                </div>
+
+                                <h3 className="text-sm font-bold text-neutral-900 mb-1.5 leading-snug">
+                                    {
+                                    award.title
+                                } </h3>
+
+                                <p className="text-[11px] text-neutral-500 leading-relaxed line-clamp-2">
+                                    {
+                                    award.desc
+                                } </p>
+                            </div>
+                        )
+                    })
+                } </div>
+
             </div>
-            <h3 className="text-lg font-bold text-neutral-900 mb-2">Submit a Nomination</h3>
-            <p className="text-sm text-neutral-500 leading-relaxed mb-4">Know a leader who deserves recognition?</p>
-            <span className="text-gb-700 text-sm font-semibold group-hover:underline">Nominate Now →</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
+        </section>
+    )
 }

@@ -60,7 +60,7 @@ const PLANS = [
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="relative py-14 lg:py-20 bg-warm-50">
+    <section id="pricing" className="relative py-14 lg:py-20 bg-warm-50" style={{ scrollMarginTop: '100px' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10">

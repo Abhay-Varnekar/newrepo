@@ -109,7 +109,7 @@ export default function SpeakersSection() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1">
           {SPEAKERS.map((speaker) => (
             <div key={speaker.seed} className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1" style={{ aspectRatio: '3/4' }}>
               {/* Photo */}
@@ -131,7 +131,7 @@ export default function SpeakersSection() {
               </div>
 
               {/* Hover overlay with bio */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-5">
+              <div className="absolute inset-0 bg-[#2a2015]/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-5">
                 {/* Social icons top right */}
                 <div className="absolute top-4 right-4 flex items-center gap-2">
                   <a href="#" className="w-8 h-8 rounded-lg bg-white/15 backdrop-blur-sm flex items-center justify-center hover:bg-gb-500 transition-all duration-300 translate-y-2 group-hover:translate-y-0 transition-transform">
@@ -157,7 +157,7 @@ export default function SpeakersSection() {
 
         {/* Hint */}
         <p className="text-center text-xs text-neutral-300 mt-10">
-          Hover over any speaker to view their profile
+          {/* Hover over any speaker to view their profile */}
         </p>
       </div>
     </section>

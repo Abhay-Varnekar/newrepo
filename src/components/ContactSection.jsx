@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Youtube } from 'lucide-react'
 
 const CONTACT_INFO = [
-  { icon: Mail, label: 'Email', value: 'support@timesaspire.com' },
+  { icon: Mail, label: 'Email', value: 'connect@timesaspire.com' },
   { icon: Phone, label: 'Phone', value: '+91 98765 43210' },
   { icon: MapPin, label: 'Headquarters', value: 'Mumbai, Maharashtra, India' },
 ]
@@ -12,6 +12,22 @@ const SOCIALS = [
   { icon: Twitter },
   { icon: Instagram },
   { icon: Youtube },
+]
+
+const COUNTRIES = [
+  'India', 'United States', 'United Kingdom', 'United Arab Emirates', 'Singapore',
+  'Australia', 'Canada', 'Germany', 'Japan', 'South Africa',
+  'Saudi Arabia', 'Netherlands', 'France', 'Malaysia', 'Thailand',
+  'South Korea', 'Brazil', 'Mexico', 'Indonesia', 'Philippines',
+  'Vietnam', 'Turkey', 'Switzerland', 'Sweden', 'Norway',
+  'Denmark', 'Italy', 'Spain', 'Portugal', 'Poland',
+  'Ireland', 'New Zealand', 'Hong Kong', 'Taiwan', 'China',
+  'Qatar', 'Kuwait', 'Bahrain', 'Oman', 'Egypt',
+  'Nigeria', 'Kenya', 'Ghana', 'Tanzania', 'Sri Lanka',
+  'Bangladesh', 'Nepal', 'Pakistan', 'Afghanistan', 'Myanmar',
+  'Cambodia', 'Laos', 'Jordan', 'Lebanon', 'Iraq',
+  'Iran', 'Israel', 'Russia', 'Ukraine', 'Argentina',
+  'Colombia', 'Chile', 'Peru', 'Costa Rica', 'Panama',
 ]
 
 const INTEREST_OPTIONS = ['', 'Attending Summit', 'Submitting Award Nomination', 'Speaking Opportunity', 'Sponsorship / Partnership', 'Media / Press', 'Other']
@@ -80,37 +96,81 @@ export default function ContactSection() {
 
           <div className="bg-warm-50 border border-neutral-100 rounded-2xl p-8 card-shadow">
             <h3 className="text-lg font-bold text-neutral-900 mb-6">Send us a message</h3>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Row 1: Name */}
+              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-500 mb-2 uppercase tracking-wider">First Name</label>
-                  <input type="text" required className="w-full px-4 py-3 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all" placeholder="John" />
+                  <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">First Name <span className="text-red-400">*</span></label>
+                  <input type="text" required className="w-full px-4 py-2.5 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all" placeholder="" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-500 mb-2 uppercase tracking-wider">Last Name</label>
-                  <input type="text" required className="w-full px-4 py-3 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all" placeholder="Doe" />
+                  <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">Last Name <span className="text-red-400">*</span></label>
+                  <input type="text" required className="w-full px-4 py-2.5 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all" placeholder="" />
                 </div>
               </div>
-              <div>
-                <label className="block text-xs font-medium text-neutral-500 mb-2 uppercase tracking-wider">Work Email</label>
-                <input type="email" required className="w-full px-4 py-3 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all" placeholder="john@company.com" />
+
+              {/* Row 2: Email + Mobile */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">Work Email <span className="text-red-400">*</span></label>
+                  <input type="email" required className="w-full px-4 py-2.5 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all" placeholder="" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">Mobile No <span className="text-red-400">*</span></label>
+                  <input type="tel" required className="w-full px-4 py-2.5 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all" placeholder="" />
+                </div>
               </div>
+
+              {/* Row 3: Country + City */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">Country <span className="text-red-400">*</span></label>
+                  <select required className="w-full px-4 py-2.5 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-400 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all appearance-none cursor-pointer">
+                    <option value="">Select country</option>
+                    {COUNTRIES.map((c) => (
+                      <option key={c} value={c}>{c}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">City <span className="text-red-400">*</span></label>
+                  <input type="text" required className="w-full px-4 py-2.5 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all" placeholder="" />
+                </div>
+              </div>
+
+              {/* Row 4: Designation + Company */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">Designation <span className="text-red-400">*</span></label>
+                  <input type="text" required className="w-full px-4 py-2.5 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all" placeholder="" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">Company Name <span className="text-red-400">*</span></label>
+                  <input type="text" required className="w-full px-4 py-2.5 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all" placeholder="" />
+                </div>
+              </div>
+
+              {/* Interest */}
               <div>
-                <label className="block text-xs font-medium text-neutral-500 mb-2 uppercase tracking-wider">I'm interested in</label>
-                <select className="w-full px-4 py-3 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-400 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all appearance-none cursor-pointer">
+                <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">I'm interested in</label>
+                <select className="w-full px-4 py-2.5 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-400 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all appearance-none cursor-pointer">
                   {INTEREST_OPTIONS.map((opt) => (
                     <option key={opt} value={opt}>{opt || 'Select an option'}</option>
                   ))}
                 </select>
               </div>
+
+              {/* Message */}
               <div>
-                <label className="block text-xs font-medium text-neutral-500 mb-2 uppercase tracking-wider">Message</label>
-                <textarea rows={4} className="w-full px-4 py-3 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all resize-none" placeholder="Tell us more about your interest..." />
+                <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">Message</label>
+                <textarea rows={3} className="w-full px-4 py-2.5 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-900 placeholder-neutral-300 focus:outline-none focus:border-gb-400 focus:ring-2 focus:ring-gb-100 transition-all resize-none" placeholder="Tell us more about your interest..." />
               </div>
+
+              {/* Submit */}
               <button
                 type="submit"
                 disabled={sending}
-                className={`w-full px-8 py-4 text-base font-semibold text-white rounded-xl transition-all duration-300 ${
+                className={`w-full px-8 py-3.5 text-base font-semibold text-white rounded-xl transition-all duration-300 ${
                   submitted
                     ? 'bg-gradient-to-r from-green-500 to-green-600'
                     : 'bg-gradient-to-r from-gb-500 to-gb-600 hover:from-gb-400 hover:to-gb-500 gold-shadow'
@@ -118,6 +178,7 @@ export default function ContactSection() {
               >
                 {sending ? 'Sending...' : submitted ? 'Sent ✓' : 'Send Message'}
               </button>
+
               {submitted && (
                 <div className="text-center py-3 px-4 bg-green-50 border border-green-200 rounded-lg">
                   <p className="text-sm text-green-700 font-medium">✓ Thank you! We'll get back to you within 24 hours.</p>

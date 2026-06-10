@@ -11,10 +11,25 @@ html {
 }
 
 .text-gradient-gb {
-  background: linear-gradient(135deg, #995f17, #d4942a, #e0a53e);
+  background: linear-gradient(
+    135deg,
+    #8f6424 0%,
+    #b8862b 20%,
+    #e1c072 50%,
+    #c99538 75%,
+    #9f6d28 100%
+  );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.text-visionaries {
+  color: #000000;
+  font-style: italic;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 0.02em;
 }
 
 .text-gradient-dark {
@@ -25,9 +40,8 @@ html {
 }
 
 .hero-event-overlay {
-  background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.6) 100%);
+  background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.4) 100%);
 }
-
 .card-shadow {
   box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
 }
@@ -51,6 +65,22 @@ html {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: shimmer 3.5s linear infinite;
+}
+
+.shimmer-blue {
+  background: linear-gradient(
+    90deg,
+    #1e88ff 0%,
+    #7b61ff 35%,
+    #ffffff 50%,
+    #ff4d8d 65%,
+    #1e88ff 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
 }
 
 @keyframes shimmer {

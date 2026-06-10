@@ -4,8 +4,8 @@ import { Menu, X } from 'lucide-react'
 const NAV_LINKS = [
   // { label: 'Next Event', href: '#featured-event' },
   { label: 'All Events', href: '#events' },
-  { label: 'Awards', href: '#awards' },
   { label: 'Speakers', href: '#speakers' },
+  { label: 'Awards', href: '#awards' },
   { label: 'About', href: '#about' },
   { label: 'Partners', href: '#partners' },
   { label: 'Contact', href: '#contact' },
@@ -56,9 +56,6 @@ export default function Navbar() {
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="#" className="nav-btn-outline px-5 py-2.5 text-sm font-semibold rounded-lg transition-all duration-200">
-              Nominate
-            </a>
             <a
               href="#pricing"
               className="px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-gb-400 to-gb-600 hover:from-gb-300 hover:to-gb-500 rounded-lg transition-all duration-300 shadow-lg shadow-gb-600/30 hover:shadow-gb-500/40"
@@ -82,9 +79,9 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-neutral-100 shadow-xl">
           <div className="px-6 py-6 space-y-1">
-            {/* <a href="#featured-event" onClick={handleNavClick} className="block px-4 py-3 text-neutral-700 hover:text-gb-700 hover:bg-gb-50 rounded-lg transition-colors font-medium">
+            <a href="#featured-event" onClick={handleNavClick} className="block px-4 py-3 text-neutral-700 hover:text-gb-700 hover:bg-gb-50 rounded-lg transition-colors font-medium">
               🔥 Next Event
-            </a> */}
+            </a>
             {NAV_LINKS.slice(1).map((link) => (
               <a
                 key={link.href}

@@ -17,8 +17,8 @@ export default function App() {
       <Navbar />
       <HeroEvent />
       <EventsSection />
-      <AwardsSection />
       <SpeakersSection />
+      <AwardsSection />
       <ImpactSection />
       <TestimonialsSection />
       <PartnersSection />

@@ -66,13 +66,13 @@ export default function EventsSection() {
               Summits, Conferences & <span className="text-gradient-gb">More</span>
             </h2>
           </div>
-          <a
+          {/* <a
             href="#"
             className="group flex items-center gap-2 text-sm font-medium text-gb-600 hover:text-gb-800 transition-colors"
           >
             View complete calendar
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
+          </a> */}
         </div>
 
         {/* Event Cards Grid */}

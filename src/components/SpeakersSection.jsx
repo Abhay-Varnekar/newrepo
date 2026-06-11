@@ -104,8 +104,8 @@ export default function SpeakersSection() {
                             <span className="text-gb-600 text-xs font-semibold tracking-[0.2em] uppercase">Featured Voices</span>
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900">
-                            Distinguished
-                            <span className="text-gradient-gb">Speakers</span>
+                            Distinguished  
+                            <span className="text-gradient-gb"> Speakers</span>
                         </h2>
                     </div>
                     <a href="#" className="group flex items-center gap-2 text-sm font-medium text-gb-600 hover:text-gb-800 transition-colors">
@@ -121,7 +121,7 @@ export default function SpeakersSection() {
                         <div key={
                                 speaker.name
                             }
-                            className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+                            className="group relative rectangle-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
                             style={
                                 {aspectRatio: '3/4'}
                         }>

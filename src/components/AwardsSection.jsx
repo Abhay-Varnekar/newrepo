@@ -118,7 +118,9 @@ const AWARDS = [
   },
 ]
 
-export default function AwardsSection() {
+export default function AwardsSection({ awards: awardsProp } = {}) {
+  const awards = awardsProp || AWARDS
+
   return (
     <section id="awards" className="relative py-20 lg:py-28 bg-warm-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -142,7 +144,7 @@ export default function AwardsSection() {
 
         {/* Awards Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5">
-          {AWARDS.map((award) => {
+          {awards.map((award) => {
             const Icon = award.icon
 
             return (

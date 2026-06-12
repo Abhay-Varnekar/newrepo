@@ -67,28 +67,28 @@ export default function HeroEvent() {
                         
                         <div className="relative mb-6">
                             {/* 3D extrusion layers */}
-                            {/* <div className="absolute top-0 left-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-black/10 translate-x-[8px] translate-y-[8px] select-none pointer-events-none" aria-hidden="true">
+                            {/* <div className="absolute top-0 left-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-black/60/10 translate-x-[8px] translate-y-[8px] select-none pointer-events-none" aria-hidden="true">
                                 SOUTH INDIA<br/>
                                 <br/>
                                 SUMMIT & AWARDS<br/>
                                 2026
                             </div>
 
-                            <div className="absolute top-0 left-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-black/20 translate-x-[6px] translate-y-[6px] select-none pointer-events-none" aria-hidden="true">
+                            <div className="absolute top-0 left-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-black/60/20 translate-x-[6px] translate-y-[6px] select-none pointer-events-none" aria-hidden="true">
                                 SOUTH INDIA<br/>
                                 <br/>
                                 SUMMIT & AWARDS<br/>
                                 2026
                             </div>
 
-                            <div className="absolute top-0 left-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-black/30 translate-x-[4px] translate-y-[4px] select-none pointer-events-none" aria-hidden="true">
+                            <div className="absolute top-0 left-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-black/60/30 translate-x-[4px] translate-y-[4px] select-none pointer-events-none" aria-hidden="true">
                                 SOUTH INDIA<br/>
                                 <br/>
                                 SUMMIT & AWARDS<br/>
                                 2026
                             </div>
 
-                            <div className="absolute top-0 left-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-black/50 translate-x-[2px] translate-y-[2px] select-none pointer-events-none" aria-hidden="true">
+                            <div className="absolute top-0 left-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-black/60/50 translate-x-[2px] translate-y-[2px] select-none pointer-events-none" aria-hidden="true">
                                 SOUTH INDIA<br/>
                                 <br/>
                                 SUMMIT & AWARDS<br/>
@@ -110,21 +110,21 @@ export default function HeroEvent() {
                         </div>
 
                         <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-8">
-                            <div className="flex items-center gap-2 text-black">
+                            <div className="flex items-center gap-2 text-black/60">
                                 <Calendar className="w-4 h-4 text-gb-600"/>
                                 <span className="text-sm font-medium">June 24, 2026</span>
                             </div>
-                            <div className="flex items-center gap-2 text-black">
+                            <div className="flex items-center gap-2 text-black/60">
                                 <MapPin className="w-4 h-4 text-gb-600"/>
                                 <span className="text-sm font-medium">Taj Yeshwantpur, Bengaluru</span>
                             </div>
-                            <div className="flex items-center gap-2 text-black">
+                            <div className="flex items-center gap-2 text-black/60">
                                 <Users className="w-4 h-4 text-gb-600"/>
                                 <span className="text-sm font-medium">500+ Delegates Expected</span>
                             </div>
                         </div>
 
-                        <p className="text-black text-lg leading-relaxed max-w-xl mb-10">
+                        <p className="text-black/60 text-lg leading-relaxed max-w-xl mb-10">
                             The definitive gathering of India's most influential business leaders — exploring strategy, innovation, AI transformation, and sustainable growth for the next decade.
                         </p>
 
@@ -156,7 +156,7 @@ export default function HeroEvent() {
                                     +100
                                 </div>
                             </div>
-                            <span className="text-white/50 text-sm">CEOs & CXOs already registered</span>
+                            <span className="text-black/60 text-sm">CEOs & CXOs already registered</span>
                         </div>
                     </div>
 

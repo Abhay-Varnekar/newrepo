@@ -1,3 +1,5 @@
+import { Routes, Route } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 import Navbar from './components/Navbar'
 import HeroEvent from './components/HeroEvent'
 import EventsSection from './components/EventsSection'
@@ -10,8 +12,9 @@ import ContactSection from './components/ContactSection'
 import NewsletterSection from './components/NewsletterSection'
 import Footer from './components/Footer'
 import PricingSection from './components/pricingsection'
+import PastEventPage from './pages/PastEventPage'
 
-export default function App() {
+function HomePage() {
   return (
     <div className="bg-warm-50 text-neutral-800 antialiased overflow-x-hidden">
       <Navbar />
@@ -22,10 +25,22 @@ export default function App() {
       <ImpactSection />
       <TestimonialsSection />
       <PartnersSection />
-      <PricingSection/>
+      <PricingSection />
       <ContactSection />
       <NewsletterSection />
       <Footer />
     </div>
   )
 }
+
+export default function App() {
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/events/:slug" element={<PastEventPage />} />
+      </Routes>
+    </>
+  )
+}

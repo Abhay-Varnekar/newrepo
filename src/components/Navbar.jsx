@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
 
 const NAV_LINKS = [
   // { label: 'Next Event', href: '#featured-event' },
@@ -11,7 +13,7 @@ const NAV_LINKS = [
   { label: 'Contact', href: '#contact' },
 ]
 
-export default function Navbar() {
+export default function Navbar() {  
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -33,21 +35,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3 group">
   <img
     src="/images/logo.png"
     alt="TimesAspire"
     className="h-40 w-40 object-contain group-hover:scale-105 transition-transform duration-300"
   />
-</a>
-
+</Link>
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="nav-link px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+                className="nav-link px-6 py-4 text-sm font-medium rounded-lg transition-all duration-200"
               >
                 {link.label}
               </a>
@@ -79,8 +80,12 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-neutral-100 shadow-xl">
           <div className="px-6 py-6 space-y-1">
-            <a href="#featured-event" onClick={handleNavClick} className="block px-4 py-3 text-neutral-700 hover:text-gb-700 hover:bg-gb-50 rounded-lg transition-colors font-medium">
-              🔥 Next Event
+          <a
+            href="#events"
+            onClick={handleNavClick}
+            className="block px-4 py-3 text-neutral-600 hover:text-gb-700 hover:bg-gb-50 rounded-lg transition-colors"
+            >
+            All Events
             </a>
             {NAV_LINKS.slice(1).map((link) => (
               <a

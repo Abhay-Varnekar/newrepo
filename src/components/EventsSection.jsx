@@ -1,49 +1,7 @@
+import { Link } from 'react-router-dom'
 import { MapPin, ArrowRight } from 'lucide-react'
 import useScrollAnimation from '../hooks/useScrollAnimation'
-
-const EVENTS = [
-  {
-    image: '/images/Summit.49c5f10831d33c125066.png',
-    badges: [
-      { text: 'New', style: 'bg-gb-500 text-white' },
-      { text: 'Conference', style: 'bg-white/90 text-neutral-700 backdrop-blur-sm' },
-    ],
-    day: '15',
-    month: 'May',
-    city: 'Ahmedabad',
-    title: 'Gujarat Visionaries Summit 2026',
-    desc: 'Ahmedabad, Gujarat.',
-    avatars: ['sp-hr1', 'sp-hr2'],
-    extraCount: '+28',
-  },
-  {
-    image: '/images/nlp1.a5225fa52103c59d3174.webp',
-    badges: [
-      { text: 'Annual', style: 'bg-gb-700 text-white' },
-      { text: 'Awards', style: 'bg-white/90 text-neutral-700 backdrop-blur-sm' },
-    ],
-    day: '27',
-    month: 'Feb',
-    city: 'Mumbai',
-    title: 'National Leadership Summit 2026',
-    desc: 'Bombay Stock Exchange, International Convention Hall, Mumbai.',
-    avatars: ['sp-edu1', 'sp-edu2', 'sp-edu3'],
-    extraCount: '+35',
-  },
-  {
-    image: '/images/869A8469.cd2c007d7222947c5537.JPG',
-    badges: [
-      { text: 'Gala', style: 'bg-gb-800 text-white' },
-    ],
-    day: '23',
-    month: 'Sep',
-    city: 'Mumbai',
-    title: 'Maharashtra Visionaries Summit & Awards 2025',
-    desc: 'Radisson Blu, Mumbai International Airport.',
-    avatars: ['sp-ent1'],
-    extraCount: '+15',
-  },
-]
+import { PAST_EVENTS } from '../data/pastEvents'
 
 export default function EventsSection() {
   const scrollRef = useScrollAnimation()
@@ -66,21 +24,15 @@ export default function EventsSection() {
               Summits, Conferences & <span className="text-gradient-gb">More</span>
             </h2>
           </div>
-          {/* <a
-            href="#"
-            className="group flex items-center gap-2 text-sm font-medium text-gb-600 hover:text-gb-800 transition-colors"
-          >
-            View complete calendar
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a> */}
         </div>
 
         {/* Event Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {EVENTS.map((event) => (
-            <div
-              key={event.title}
-              className="event-card group bg-white rounded-2xl border border-neutral-100 overflow-hidden card-shadow hover:card-shadow-hover hover:border-gb-200 transition-all duration-500 cursor-pointer"
+          {PAST_EVENTS.map((event) => (
+            <Link
+              key={event.slug}
+              to={`/events/${event.slug}`}
+              className="event-card group bg-white rounded-2xl border border-neutral-100 overflow-hidden card-shadow hover:card-shadow-hover hover:border-gb-200 transition-all duration-500 cursor-pointer block"
             >
               <div className="relative h-52 overflow-hidden">
                 <img
@@ -138,7 +90,7 @@ export default function EventsSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

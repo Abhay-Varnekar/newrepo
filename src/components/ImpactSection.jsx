@@ -20,7 +20,15 @@ const PHOTOS = [
   { seed: 'panel-light', h: 'h-48', offset: true },
 ]
 
-export default function ImpactSection() {
+export default function ImpactSection({ about } = {}) {
+  const heading     = about?.heading     || 'Creating Moments That\nShape Industries'
+  const description = about?.description || 'Every TimesAspire event is meticulously crafted to deliver more than conversations — we create catalysts for change, collaboration, and growth.'
+  const features    = about?.features    || FEATURES
+  const stats       = about?.stats       || STATS
+  const photos      = about?.photos      || PHOTOS
+
+  const [headingLine1, headingLine2] = heading.split('\n')
+
   return (
     <section id="about" className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-gb-200/30 rounded-full blur-[120px]" />
@@ -32,14 +40,14 @@ export default function ImpactSection() {
               <span className="text-gb-600 text-xs font-semibold tracking-[0.2em] uppercase">Our Impact</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 mb-6">
-              Creating Moments That<br /><span className="text-gradient-gb">Shape Industries</span>
+              {headingLine1}<br /><span className="text-gradient-gb">{headingLine2}</span>
             </h2>
             <p className="text-neutral-500 text-lg leading-relaxed mb-8">
-              Every TimesAspire event is meticulously crafted to deliver more than conversations — we create catalysts for change, collaboration, and growth.
+              {description}
             </p>
 
             <div className="space-y-5">
-              {FEATURES.map((f) => {
+              {features.map((f) => {
                 const Icon = f.icon
                 return (
                   <div key={f.title} className="flex items-start gap-4">
@@ -58,16 +66,24 @@ export default function ImpactSection() {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
-              {PHOTOS.filter((p) => !p.offset).map((p) => (
-                <div key={p.seed} className={`rounded-2xl overflow-hidden ${p.h} card-shadow`}>
-                  <img src={`https://picsum.photos/seed/${p.seed}/500/500.jpg`} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              {photos.filter((p) => !p.offset).map((p) => (
+                <div key={p.seed || p.src} className={`rounded-2xl overflow-hidden ${p.h} card-shadow`}>
+                  <img
+                    src={p.src || `https://picsum.photos/seed/${p.seed}/500/500.jpg`}
+                    alt=""
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
               ))}
             </div>
             <div className="space-y-4 pt-8">
-              {PHOTOS.filter((p) => p.offset).map((p) => (
-                <div key={p.seed} className={`rounded-2xl overflow-hidden ${p.h} card-shadow`}>
-                  <img src={`https://picsum.photos/seed/${p.seed}/500/500.jpg`} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              {photos.filter((p) => p.offset).map((p) => (
+                <div key={p.seed || p.src} className={`rounded-2xl overflow-hidden ${p.h} card-shadow`}>
+                  <img
+                    src={p.src || `https://picsum.photos/seed/${p.seed}/500/500.jpg`}
+                    alt=""
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
               ))}
             </div>
@@ -75,7 +91,7 @@ export default function ImpactSection() {
         </div>
 
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 p-8 md:p-10 rounded-2xl bg-white border border-neutral-100 card-shadow">
-          {STATS.map((s) => (
+          {stats.map((s) => (
             <div key={s.label} className="text-center">
               <div className={`text-4xl md:text-5xl font-extrabold mb-1 ${s.highlight ? 'text-gb-600' : 'text-neutral-800'}`}>
                 {s.value}
@@ -87,4 +103,4 @@ export default function ImpactSection() {
       </div>
     </section>
   )
-}
+}

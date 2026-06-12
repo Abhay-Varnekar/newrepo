@@ -156,11 +156,11 @@ export default function PastEventHero({ event }) {
       className="w-full overflow-hidden bg-[#0a0906] pt-20"
       style={{ height: '100vh' }}
     >
-      {/* ── Desktop: uniform 5-col × 3-row grid ── */}
+      {/* ── Mosaic grid — all screen sizes ── */}
       <div
-        className="hidden lg:grid h-full"
+        className="grid h-full"
         style={{
-          gridTemplateColumns: '1fr 1fr 240px 1fr 1fr',
+          gridTemplateColumns: 'repeat(2, 1fr) clamp(130px, 28vw, 240px) repeat(2, 1fr)',
           gridTemplateRows: '1fr 1fr 1fr',
           gap: '2px',
           background: '#0a0906',
@@ -173,36 +173,6 @@ export default function PastEventHero({ event }) {
         <CentreCard event={event} heroTitle={heroTitle} />
       </div>
 
-      {/* ── Mobile fallback ── */}
-      <div className="lg:hidden h-full relative">
-        <img
-          src={event.image}
-          alt={event.title}
-          className="w-full h-full object-cover grayscale"
-        />
-        <div className="absolute inset-0 bg-black/75" />
-        <div className="absolute inset-0 flex items-center justify-center p-8">
-          <div className="text-center max-w-xs w-full">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex-1 h-px" style={{ background: GOLD_35 }} />
-              <span className="text-[7px] tracking-[0.3em] uppercase font-semibold" style={{ color: GOLD_75 }}>
-                Exclusive Coverage
-              </span>
-              <div className="flex-1 h-px" style={{ background: GOLD_35 }} />
-            </div>
-            <div className="mb-4 leading-snug">
-              {heroTitle.top      && <div className="text-xl font-bold text-white">{heroTitle.top}</div>}
-              {heroTitle.highlight && <div className="text-2xl font-bold italic" style={{ color: GOLD, fontFamily: 'Georgia, serif' }}>{heroTitle.highlight}</div>}
-              {heroTitle.bottom   && <div className="text-xl font-bold text-white">{heroTitle.bottom}</div>}
-            </div>
-            <div className="w-full mb-3" style={{ height: '1px', background: GOLD_15 }} />
-            <div className="flex flex-col items-center gap-1.5 text-[10px]" style={{ color: GOLD_55 }}>
-              <span className="flex items-center gap-1"><Calendar className="w-2.5 h-2.5" />{event.day} {event.month} {event.year}</span>
-              <span className="flex items-center gap-1"><MapPin className="w-2.5 h-2.5" />{event.desc}</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   )
 }

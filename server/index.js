@@ -1,8 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
-const Razorpay = require('razorpay');
-const crypto = require('crypto');
+const cors    = require('cors');
+const crypto  = require('crypto');
+const fs      = require('fs');
+const path    = require('path');
+const Razorpay      = require('razorpay');
+const emailService  = require('./services/emailService');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -122,13 +125,24 @@ app.post('/api/create-order', async (req, res) => {
  * This step is CRITICAL for security — never skip it.
  */
 app.post('/api/verify-payment', (req, res) => {
-  const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+  const {
+    razorpay_order_id,
+    razorpay_payment_id,
+    razorpay_signature,
+    // Fee breakdown forwarded from the frontend fee modal
+    planName,
+    quantity,
+    baseAmount,
+    gstOnAmount,
+    convenienceFee,
+    gstOnConvenience,
+    totalAmount,
+  } = req.body;
 
   if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
     return res.status(400).json({ success: false, error: 'Missing required payment fields.' });
   }
 
-  // Construct the expected signature body as per Razorpay docs
   const signatureBody = `${razorpay_order_id}|${razorpay_payment_id}`;
 
   const expectedSignature = crypto
@@ -141,17 +155,45 @@ app.post('/api/verify-payment', (req, res) => {
     Buffer.from(razorpay_signature, 'hex')
   );
 
-  if (isValid) {
-    console.log(
-      `[Payment Verified] order_id=${razorpay_order_id} payment_id=${razorpay_payment_id}`
-    );
-    return res.json({ success: true, paymentId: razorpay_payment_id });
-  } else {
-    console.warn(
-      `[Payment INVALID] order_id=${razorpay_order_id} payment_id=${razorpay_payment_id} — signature mismatch`
-    );
+  if (!isValid) {
+    console.warn(`[Payment INVALID] order=${razorpay_order_id} payment=${razorpay_payment_id} — signature mismatch`);
     return res.status(400).json({ success: false, error: 'Invalid payment signature.' });
   }
+
+  // ── Payment is genuine ──
+  const now           = Date.now();
+  const receiptId     = razorpay_payment_id;
+  const datePart      = new Date(now).toISOString().slice(0, 10).replace(/-/g, '');
+  const idSuffix      = razorpay_payment_id.slice(-5).toUpperCase();
+  const receiptNumber = `TA-${datePart}-${idSuffix}`;
+
+  console.log(`[Payment Verified] order=${razorpay_order_id} payment=${razorpay_payment_id} receipt=${receiptNumber}`);
+
+  // ── Send Email Confirmation ──
+  // Do this asynchronously so it doesn't block the response
+  (async () => {
+    try {
+      const payment  = await razorpay.payments.fetch(razorpay_payment_id);
+      const customerEmail  = payment.email || null;
+      console.log(`[Email] Customer email for ${razorpay_payment_id}: ${customerEmail || '(none)'}`);
+
+      if (customerEmail) {
+        await emailService.sendConfirmationEmail({
+          to: customerEmail,
+          planName: planName,
+          quantity: Number(quantity) || 1,
+          totalAmount: Number(totalAmount) || 0,
+          paymentId: razorpay_payment_id,
+          orderId: razorpay_order_id
+        });
+      }
+    } catch (err) {
+      console.error(`[Email] Failed to process email for ${razorpay_payment_id}:`, err);
+    }
+  })();
+
+  // Return immediately
+  return res.json({ success: true, paymentId: razorpay_payment_id });
 });
 
 // ---------------------------------------------------------------------------

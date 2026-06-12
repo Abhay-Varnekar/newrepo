@@ -3,11 +3,11 @@ import { Check, ArrowRight, PhoneCall, X } from 'lucide-react'
 import useRazorpay from '../hooks/useRazorpay'
 
 // ---------------------------------------------------------------------------
-// Fee configuration — edit these to change rates
+// Fee configuration
 // ---------------------------------------------------------------------------
-const GST_RATE = 0.18           // 18% GST on base amount
-const CONVENIENCE_RATE = 0.02   // 2% convenience charge on base amount
-const CONVENIENCE_GST_RATE = 0.18 // 18% GST on convenience charge
+const GST_RATE = 0.18   // 18% GST on base amount — sent to Razorpay
+// Note: Razorpay adds its own convenience charges on top of this amount.
+//       We do NOT pre-calculate convenience here to avoid double-charging.
 
 // ---------------------------------------------------------------------------
 // Plans
@@ -73,14 +73,13 @@ const PLANS = [
 ]
 
 // ---------------------------------------------------------------------------
-// Helper: compute fee breakup for a given base amount (in rupees)
+// Helper: compute fees for a given base amount (in rupees)
+// Only base + 18% GST is charged — Razorpay adds its own convenience fee
 // ---------------------------------------------------------------------------
 function computeFees(baseRupees) {
   const gstOnAmount = Math.round(baseRupees * GST_RATE * 100) / 100
-  const convenience = Math.round(baseRupees * CONVENIENCE_RATE * 100) / 100
-  const gstOnConvenience = Math.round(convenience * CONVENIENCE_GST_RATE * 100) / 100
-  const total = baseRupees + gstOnAmount + convenience + gstOnConvenience
-  return { baseRupees, gstOnAmount, convenience, gstOnConvenience, total }
+  const total = baseRupees + gstOnAmount
+  return { baseRupees, gstOnAmount, total }
 }
 
 // ---------------------------------------------------------------------------
@@ -102,9 +101,7 @@ function FeeBreakupModal({ plan, qty, onConfirm, onClose }) {
 
   const rows = [
     { label: `Amount (${qty > 1 ? `${qty} × ${inr(plan.amount / 100)}` : plan.price})`, value: inr(fees.baseRupees) },
-    { label: `GST on Amount (18%)`, value: inr(fees.gstOnAmount) },
-    { label: `Razorpay Charges (2%)`, value: inr(fees.convenience) },
-    { label: `GST on Razorpay Charges (18%)`, value: inr(fees.gstOnConvenience) },
+    { label: 'GST on Amount (18%)', value: inr(fees.gstOnAmount) },
   ]
 
   return (
@@ -141,11 +138,16 @@ function FeeBreakupModal({ plan, qty, onConfirm, onClose }) {
             </div>
           ))}
 
-          {/* Divider */}
+          {/* Divider + Total */}
           <div className="border-t border-neutral-100 pt-3 flex items-center justify-between">
             <span className="text-sm font-bold text-neutral-900">Total Charges</span>
             <span className="text-sm font-bold text-gb-600">{inr(fees.total)}</span>
           </div>
+
+          {/* Note about Razorpay convenience */}
+          <p className="text-[9px] text-neutral-400 mt-2 leading-relaxed">
+            * Razorpay may add a small convenience fee at checkout.
+          </p>
         </div>
 
         {/* Actions */}
@@ -159,7 +161,7 @@ function FeeBreakupModal({ plan, qty, onConfirm, onClose }) {
           </button>
           <button
             type="button"
-            onClick={() => onConfirm(fees.total)}
+            onClick={() => onConfirm(fees)}
             className="flex-1 py-2.5 rounded-lg bg-gradient-to-r from-gb-500 to-gb-600 text-white text-xs font-semibold hover:from-gb-400 hover:to-gb-500 gold-shadow transition-all"
           >
             Proceed to Pay
@@ -194,12 +196,20 @@ export default function PricingSection() {
     setPendingCheckout({ plan, qty })
   }
 
-  const handleConfirmPayment = (totalRupees) => {
+  const handleConfirmPayment = (fees) => {
     const { plan, qty } = pendingCheckout
-    // Convert total rupees → paise (integer)
-    const totalPaise = Math.round(totalRupees * 100)
+    // Amount sent to Razorpay = base + 18% GST only (Razorpay adds its own convenience)
+    const totalPaise = Math.round(fees.total * 100)
+    // Breakdown for the receipt PDF
+    const breakdown = {
+      baseAmount:       fees.baseRupees,
+      gstOnAmount:      fees.gstOnAmount,
+      convenienceFee:   0,   // Razorpay handles this
+      gstOnConvenience: 0,   // Razorpay handles this
+      totalAmount:      fees.total,
+    }
     setPendingCheckout(null)
-    openCheckout(plan, qty, totalPaise)
+    openCheckout(plan, qty, totalPaise, breakdown)
   }
 
   return (

@@ -69,7 +69,7 @@ export default function PastEventNavbar() {
               className="px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-gb-400 to-gb-600 hover:from-gb-300 hover:to-gb-500 rounded-lg transition-all duration-300 shadow-lg shadow-gb-600/30 hover:shadow-gb-500/40 flex items-center gap-2"
             >
               <Home className="w-4 h-4" />
-              Back to Home
+              Featured Event
             </Link>
           </div>
 

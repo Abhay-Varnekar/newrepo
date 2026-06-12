@@ -6,12 +6,10 @@ const FEATURES = [
   { icon: Award, title: 'Prestigious Recognition', desc: 'Rigorous, transparent nomination and jury processes that add real credibility.' },
 ]
 
-const STATS = [
-  { value: '150+', label: 'Events Concluded', highlight: true },
-  { value: '500+', label: 'Award Recipients' },
-  { value: '1200+', label: 'Speakers Featured' },
-  { value: '98%', label: 'Satisfaction Rate' },
-]
+const QUOTE = {
+  text: "Beyond boundaries and borders, we bring visionary minds together. It's not just about hosting an event—it's about creating a global ecosystem where ideas spark and real impact begins.",
+  author: "TimesAspire Leadership"
+}
 
 const PHOTOS = [
   { seed: 'stage-talk-light', h: 'h-48' },
@@ -24,7 +22,7 @@ export default function ImpactSection({ about } = {}) {
   const heading     = about?.heading     || 'Creating Moments That\nShape Industries'
   const description = about?.description || 'Every TimesAspire event is meticulously crafted to deliver more than conversations — we create catalysts for change, collaboration, and growth.'
   const features    = about?.features    || FEATURES
-  const stats       = about?.stats       || STATS
+  const quote       = about?.quote       || QUOTE
   const photos      = about?.photos      || PHOTOS
 
   const [headingLine1, headingLine2] = heading.split('\n')
@@ -90,17 +88,27 @@ export default function ImpactSection({ about } = {}) {
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 p-8 md:p-10 rounded-2xl bg-white border border-neutral-100 card-shadow">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className={`text-4xl md:text-5xl font-extrabold mb-1 ${s.highlight ? 'text-gb-600' : 'text-neutral-800'}`}>
-                {s.value}
-              </div>
-              <div className="text-sm text-neutral-400">{s.label}</div>
+        {/* Mission Quote Block */}
+        <div className="mt-12 bg-white border border-neutral-100 rounded-2xl py-6 px-6 md:py-8 md:px-10 text-center card-shadow relative overflow-hidden">
+          {/* Decorative accents */}
+          <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-gb-500 to-transparent opacity-70" />
+          <div className="absolute -top-8 -left-4 text-7xl text-gb-100 font-serif select-none">"</div>
+          <div className="absolute -bottom-12 -right-4 text-7xl text-gb-100 font-serif select-none rotate-180">"</div>
+          
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h3 className="text-base md:text-lg font-serif italic text-neutral-800 leading-relaxed mb-3">
+              "{quote.text}"
+            </h3>
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-6 h-px bg-gb-500/50" />
+              <span className="text-[10px] md:text-xs font-semibold text-gb-600 tracking-[0.2em] uppercase">
+                {quote.author}
+              </span>
+              <div className="w-6 h-px bg-gb-500/50" />
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
   )
-}
+}

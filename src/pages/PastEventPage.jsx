@@ -1,5 +1,5 @@
 import { useParams, Navigate } from 'react-router-dom'
-import { PAST_EVENTS } from '../data/pastEvents'
+import { PAST_EVENTS } from '../data/events'
 
 import PastEventNavbar from '../components/PastEventNavbar'
 import PastEventHero from '../components/PastEventHero'
@@ -22,16 +22,13 @@ export default function PastEventPage() {
 
   return (
     <div className="bg-warm-50 text-neutral-800 antialiased overflow-x-hidden">
-      <PastEventNavbar />
+      <PastEventNavbar event={event} />
       <PastEventHero event={event} />
       <PastEventVideoSection videoUrl={event.videoUrl} />
-      <SpeakersSection speakers={event.speakers} />
-      <AwardsSection awards={event.awards} />
       <ImpactSection about={event.about} />
-      <TestimonialsSection />
-      <PartnersSection />
-      {/* Pricing section intentionally omitted for past events */}
-      <ContactSection />
+      <SpeakersSection speakers={event.speakers} />
+      {/* <AwardsSection awards={event.awards} /> */}
+      <TestimonialsSection testimonials={event.about?.testimonials || event.testimonials} />
       <NewsletterSection />
       <Footer />
     </div>

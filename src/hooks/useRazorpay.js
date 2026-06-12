@@ -5,14 +5,13 @@
  * - Calls the backend to create a secure order.
  * - Opens the Razorpay modal.
  * - Verifies the payment server-side after checkout completes.
- * - Sends the full fee breakdown so the server can generate a receipt PDF
- *   and email it to the customer in the background.
- * - On success, shows a confirmation alert and scrolls to the contact section.
+ * - On success, shows a confirmation message and scrolls to contact.
+ * - The receipt PDF is generated in the background and emailed to the customer.
  */
 
 const RAZORPAY_SCRIPT_URL = 'https://checkout.razorpay.com/v1/checkout.js'
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
-const KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID
+const KEY_ID      = import.meta.env.VITE_RAZORPAY_KEY_ID
 
 /**
  * Injects the Razorpay SDK script into the document (idempotent).
@@ -27,10 +26,10 @@ function loadRazorpayScript() {
       existing.addEventListener('error', () => resolve(false))
       return
     }
-    const script = document.createElement('script')
-    script.id    = 'razorpay-checkout-script'
-    script.src   = RAZORPAY_SCRIPT_URL
-    script.async = true
+    const script   = document.createElement('script')
+    script.id      = 'razorpay-checkout-script'
+    script.src     = RAZORPAY_SCRIPT_URL
+    script.async   = true
     script.onload  = () => resolve(true)
     script.onerror = () => resolve(false)
     document.body.appendChild(script)
@@ -43,7 +42,7 @@ export default function useRazorpay() {
    *
    * @param {{ name: string, amount: number }} plan
    * @param {number} quantity
-   * @param {number} totalPaise  Pre-calculated total in paise (incl. GST & convenience).
+   * @param {number} totalPaise   Pre-calculated total in paise (incl. GST & convenience).
    * @param {{
    *   baseAmount: number,
    *   gstOnAmount: number,
@@ -69,9 +68,9 @@ export default function useRazorpay() {
     let orderData
     try {
       const response = await fetch(`${BACKEND_URL}/api/create-order`, {
-        method: 'POST',
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+        body:    JSON.stringify({
           amount:   totalAmount,
           currency: 'INR',
           planName: `${plan.name} (Qty: ${quantity})`,
@@ -101,17 +100,17 @@ export default function useRazorpay() {
       description: `${plan.name} — ${quantity} Ticket${quantity > 1 ? 's' : ''}`,
       order_id:    orderData.orderId,
 
-      // 4. Payment success — verify server-side, then send email in background
+      // 4. Payment success — verify server-side, then send receipt email in background
       handler: async (response) => {
         try {
           const verifyResponse = await fetch(`${BACKEND_URL}/api/verify-payment`, {
-            method: 'POST',
+            method:  'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
+            body:    JSON.stringify({
               razorpay_order_id:   response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature:  response.razorpay_signature,
-              // Fee breakdown for the background email
+              // Fee breakdown for PDF generation
               planName:         plan.name,
               quantity,
               baseAmount:       breakdown?.baseAmount       ?? 0,
@@ -125,7 +124,7 @@ export default function useRazorpay() {
           const verifyData = await verifyResponse.json()
 
           if (verifyData.success) {
-            // Scroll to the contact / registration section
+            // Scroll to contact section
             const contactSection = document.getElementById('contact')
             if (contactSection) {
               contactSection.scrollIntoView({ behavior: 'smooth' })
@@ -134,7 +133,7 @@ export default function useRazorpay() {
               `🎉 Payment Successful!\n\n` +
               `Your registration for ${quantity > 1 ? `${quantity}× ` : ''}${plan.name} is confirmed.\n` +
               `Payment ID: ${response.razorpay_payment_id}\n\n` +
-              `📧 Your payment details will be sent to your registered email address shortly.\n\n` +
+              `📧 Your payment receipt will be emailed to your registered email address shortly.\n\n` +
               `Our team will reach out to you soon.`
             )
           } else {
@@ -159,8 +158,8 @@ export default function useRazorpay() {
       theme: { color: '#B8860B' },
 
       modal: {
-        ondismiss:   () => console.log('[useRazorpay] Checkout dismissed by user.'),
-        escape:      true,
+        ondismiss:     () => console.log('[useRazorpay] Checkout dismissed by user.'),
+        escape:        true,
         backdropclose: false,
       },
     }

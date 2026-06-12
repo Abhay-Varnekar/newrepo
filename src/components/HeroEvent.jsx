@@ -41,7 +41,7 @@ export default function HeroEvent() {
         <section id="featured-event" className="relative min-h-screen flex items-center overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0">
-                <img src="/images/South India Summit.png" alt="South India Summit" className="w-full h-full object-cover"/>
+                <img src="/images/hero image/South India Summit.png" alt="South India Summit" className="w-full h-full object-cover"/>
                 <div className="absolute inset-0 hero-event-overlay"/>
             </div>
             <div className="absolute top-20 right-10 w-96 h-96 bg-gb-500/10 rounded-full blur-[120px]"/>

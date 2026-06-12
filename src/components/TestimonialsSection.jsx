@@ -6,73 +6,73 @@ const SQRT_5000 = Math.sqrt(5000)
 const TESTIMONIALS = [
   {
     id: 1,
-    text: "Winning the CEO of the Year award was a defining moment for our brand. The event quality, the networking, and the post-event visibility were absolutely world-class.",
-    by: "Vikram Patel",
-    role: "CEO, Sterling Industries",
-    img: "https://picsum.photos/seed/tst-ceo1/150/150.jpg",
+    text: "Speaking at this summit was an incredible experience. The quality of attendees and the depth of conversations were truly unmatched in the industry.",
+    by: "Aditya Thontakudi",
+    role: "Keynote Speaker",
+    img: "/images/speakers/national leadership summit/Aditya Thontakudi/image.png",
   },
   {
     id: 2,
-    text: "TimesAspire's HR Summit gave us access to CHROs we'd been trying to reach for months. The curated networking format is genuinely different from anything else in India.",
-    by: "Nisha Agarwal",
-    role: "VP - People, CloudFirst Tech",
-    img: "https://picsum.photos/seed/tst-chro2/150/150.jpg",
+    text: "The organization of the event was flawless. It provided an excellent platform to share insights and connect with visionary leaders from across the country.",
+    by: "Arfeen Khan",
+    role: "Featured Speaker",
+    img: "/images/speakers/national leadership summit/Afreen Khan/image.png",
   },
   {
     id: 3,
-    text: "As a startup founder, speaking at TimesAspire opened doors to three major partnerships. Their team's professionalism and attention to detail is remarkable.",
-    by: "Rohan Singh",
-    role: "Founder, GreenLeaf Solutions",
-    img: "https://picsum.photos/seed/tst-fnd3/150/150.jpg",
+    text: "TimesAspire events always bring together the brightest minds. The energy, the networking, and the knowledge sharing were absolutely phenomenal.",
+    by: "Amisha Vora",
+    role: "Panelist",
+    img: "/images/speakers/national leadership summit/Amisha Vora/image.png",
   },
   {
     id: 4,
-    text: "The Education Leadership Awards brought credibility to our institution that no marketing budget could buy. We saw a 40% increase in admissions inquiries post-event.",
-    by: "Dr. Meera Joshi",
-    role: "Director, BrightPath Academy",
-    img: "https://picsum.photos/seed/tst-edu4/150/150.jpg",
+    text: "I was highly impressed by the curation of topics. The discussions were highly relevant and provided actionable takeaways for every leader in the room.",
+    by: "Dr. Brillian S. K.",
+    role: "Keynote Speaker",
+    img: "/images/speakers/maharashtra summit/Brillian S. K/image.png",
   },
   {
     id: 5,
-    text: "Sponsoring the Gujarat Summit was the best marketing investment we made last year. The lead quality was exceptional and we closed 12 deals directly from the event.",
-    by: "Amit Desai",
-    role: "CMO, FinEdge Solutions",
-    img: "https://picsum.photos/seed/tst-spn5/150/150.jpg",
+    text: "A truly premium experience. From the stage setup to the audience engagement, everything was executed with the utmost professionalism.",
+    by: "Deepal Shah",
+    role: "Featured Speaker",
+    img: "/images/speakers/maharashtra summit/Deepal Shah/image.png",
   },
   {
     id: 6,
-    text: "The roundtable format allowed for genuine conversations with policymakers. I've never experienced that level of access at any other conference in India.",
-    by: "Kavitha Nair",
-    role: "Policy Advisor, NITI Aayog",
-    img: "https://picsum.photos/seed/tst-pol6/150/150.jpg",
+    text: "It was an absolute honor to share the stage with such distinguished individuals. This summit is a must-attend for anyone serious about growth and impact.",
+    by: "Prashant Nagre",
+    role: "Guest Speaker",
+    img: "/images/speakers/maharashtra summit/Prashant Nagre/image.png",
   },
   {
     id: 7,
-    text: "TimesAspire understands what leaders need. No fluff, no filler — just high-impact sessions with people who've actually built things.",
-    by: "Rajiv Mehta",
-    role: "MD, NovaTech Industries",
-    img: "https://picsum.photos/seed/tst-md7/150/150.jpg",
+    text: "The sheer scale of networking opportunities available here is incredible. I've forged partnerships here that will last a lifetime.",
+    by: "Vaibhav Maloo",
+    role: "Panelist",
+    img: "/images/speakers/maharashtra summit/Vaibhav Maloo/image.png",
   },
   {
     id: 8,
-    text: "We've participated in 4 TimesAspire events now. Each one gets better. The team genuinely cares about creating value for every attendee.",
-    by: "Priyanka Shah",
-    role: "CHRO, PeopleFirst Corp",
-    img: "https://picsum.photos/seed/tst-chr8/150/150.jpg",
+    text: "If you want to understand where the future of the industry is heading, this is the room you need to be in. Exceptionally well curated.",
+    by: "Anand Desai",
+    role: "Keynote Speaker",
+    img: "/images/speakers/gujrat summit/Anand Desai/image.png",
   },
   {
     id: 9,
-    text: "The Social Impact Award recognition helped us attract donors and volunteers. TimesAspire doesn't just give awards — they amplify your mission.",
-    by: "Suresh Kumar",
-    role: "Founder, HopeFoundation",
-    img: "https://picsum.photos/seed/tst-ngo9/150/150.jpg",
+    text: "I loved the dynamic format of the sessions. It wasn't just lectures, it was a true exchange of ideas among peers and innovators.",
+    by: "Jaimin Gupta",
+    role: "Featured Speaker",
+    img: "/images/speakers/gujrat summit/Jaimin Gupta/image.png",
   },
   {
     id: 10,
-    text: "From the venue to the speakers to the after-party — everything was impeccable. TimesAspire sets the standard for business events in India.",
-    by: "Ananya Reddy",
-    role: "CEO, Elevate Group",
-    img: "https://picsum.photos/seed/tst-ceo10/150/150.jpg",
+    text: "Being recognized and having the opportunity to address such an elite gathering was a highlight of the year. Kudos to the entire organizing team.",
+    by: "Saumya Engineer",
+    role: "Guest Speaker",
+    img: "/images/speakers/gujrat summit/Saumya Engineer/image.png",
   },
 ]
 
@@ -143,9 +143,13 @@ function TestimonialCard({ position, testimonial, handleMove, cardSize }) {
   )
 }
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ testimonials = TESTIMONIALS }) {
   const [cardSize, setCardSize] = useState(320)
-  const [list, setList] = useState(TESTIMONIALS)
+  const [list, setList] = useState(testimonials)
+
+  useEffect(() => {
+    setList(testimonials)
+  }, [testimonials])
 
   const handleMove = (steps) => {
     const newList = [...list]
@@ -177,7 +181,7 @@ export default function TestimonialsSection() {
   }, [])
 
   return (
-    <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+    <section id="testimonials" className="relative py-20 lg:py-28 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">

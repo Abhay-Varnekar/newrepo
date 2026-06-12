@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { MapPin, ArrowRight } from 'lucide-react'
 import useScrollAnimation from '../hooks/useScrollAnimation'
-import { PAST_EVENTS } from '../data/pastEvents'
+import { PAST_EVENTS } from '../data/events'
 
 export default function EventsSection() {
   const scrollRef = useScrollAnimation()

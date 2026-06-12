@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 /**
  * emailService.js
  *
@@ -221,4 +223,67 @@ async function sendConfirmationEmail({ to, planName, quantity, totalAmount, paym
   );
 }
 
-module.exports = { sendConfirmationEmail };
+// ── Receipt email (with PDF attachment) ──────────────────────────────────────
+/**
+ * sendReceiptEmail — sends the payment receipt with the PDF attached.
+ *
+ * @param {object} opts
+ * @param {string} opts.to             Customer email address
+ * @param {string} opts.planName
+ * @param {number} opts.quantity
+ * @param {number} opts.totalAmount    In rupees
+ * @param {string} opts.paymentId
+ * @param {string} opts.orderId
+ * @param {string} opts.receiptNumber
+ * @param {string} opts.pdfPath        Absolute path to the generated PDF
+ */
+async function sendReceiptEmail({ to, planName, quantity, totalAmount, paymentId, orderId, receiptNumber, pdfPath }) {
+  const transport = getTransport();
+
+  if (!transport) {
+    console.warn('[emailService] SMTP not configured — skipping receipt email.');
+    return;
+  }
+
+  if (!to) {
+    console.warn('[emailService] No customer email — skipping receipt email.');
+    return;
+  }
+
+  const data = {
+    planName:  planName  || 'TimesAspire Pass',
+    quantity:  quantity  || 1,
+    amount:    inr(totalAmount || 0),
+    paymentId: paymentId || '—',
+    orderId:   orderId   || '—',
+  };
+
+  // Slightly different subject line for the receipt vs. the initial confirmation
+  const subject = `🧾 Your Receipt — TimesAspire (${receiptNumber || paymentId})`;
+  const html    = buildHtml(data);
+
+  const companyBcc = process.env.COMPANY_EMAIL || null;
+
+  const mailOptions = {
+    from:    process.env.SMTP_FROM || `TimesAspire <${process.env.SMTP_USER}>`,
+    to,
+    ...(companyBcc ? { bcc: companyBcc } : {}),
+    subject,
+    html,
+    attachments: pdfPath ? [{
+      filename:    `Receipt-${receiptNumber || paymentId}.pdf`,
+      path:        pdfPath,
+      contentType: 'application/pdf',
+    }] : [],
+  };
+
+  await transport.sendMail(mailOptions);
+
+  console.log(
+    `[emailService] Receipt email sent → ${to}` +
+    (companyBcc ? `  (BCC: ${companyBcc})` : '') +
+    (pdfPath ? '  [PDF attached]' : '')
+  );
+}
+
+module.exports = { sendConfirmationEmail, sendReceiptEmail };

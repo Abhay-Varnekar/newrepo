@@ -24,8 +24,8 @@ function HomePage() {
       <AwardsSection />
       <ImpactSection />
       <TestimonialsSection />
-      <PartnersSection />
       <PricingSection />
+      <PartnersSection />
       <ContactSection />
       <NewsletterSection />
       <Footer />
@@ -43,4 +43,4 @@ export default function App() {
       </Routes>
     </>
   )
-}
+}

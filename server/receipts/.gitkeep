@@ -1,0 +1,2 @@
+# This directory stores generated receipt PDFs.
+# Files are created after each successful payment and named <paymentId>.pdf

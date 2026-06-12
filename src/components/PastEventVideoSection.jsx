@@ -10,11 +10,38 @@
  *
  * For YouTube embeds, use an <iframe> instead — contact the developer.
  */
+import { useEffect, useRef } from 'react'
+
 export default function PastEventVideoSection({ videoUrl }) {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    if (!videoRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Browsers block unmuted autoplay, so we use .catch to prevent console errors
+            videoRef.current.play().catch(() => {})
+          } else {
+            videoRef.current.pause()
+          }
+        })
+      },
+      { threshold: 0.5 } // Play when at least 50% is visible
+    )
+
+    observer.observe(videoRef.current)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
   if (!videoUrl) return null
 
   return (
-    <section className="bg-warm-50 py-14 lg:py-20">
+    <section id="video" className="bg-warm-50 py-14 lg:py-20">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
 
         {/* Optional label */}
@@ -29,8 +56,11 @@ export default function PastEventVideoSection({ videoUrl }) {
         {/* Video player */}
         <div className="rounded-2xl overflow-hidden shadow-2xl shadow-neutral-300/60 border border-neutral-200/60">
           <video
+            ref={videoRef}
             src={videoUrl}
             controls
+            muted
+            loop
             className="w-full block bg-black"
             style={{ aspectRatio: '16/9' }}
           >

@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { label: 'Contact', href: '#contact' },
 ]
 
-export default function Navbar() {  
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -28,20 +28,19 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'nav-scrolled' : 'bg-black1 backdrop-blur-xl'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'nav-scrolled' : 'bg-black1 backdrop-blur-xl'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-  <img
-    src="/images/logo.png"
-    alt="TimesAspire"
-    className="h-40 w-40 object-contain group-hover:scale-105 transition-transform duration-300"
-  />
-</Link>
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-3 group">
+            <img
+              src="/images/logos/logo.png"
+              alt="TimesAspire"
+              className="h-40 w-40 object-contain group-hover:scale-105 transition-transform duration-300"
+            />
+          </Link>
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map((link) => (
@@ -80,12 +79,12 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-neutral-100 shadow-xl">
           <div className="px-6 py-6 space-y-1">
-          <a
-            href="#events"
-            onClick={handleNavClick}
-            className="block px-4 py-3 text-neutral-600 hover:text-gb-700 hover:bg-gb-50 rounded-lg transition-colors"
+            <a
+              href="#events"
+              onClick={handleNavClick}
+              className="block px-4 py-3 text-neutral-600 hover:text-gb-700 hover:bg-gb-50 rounded-lg transition-colors"
             >
-            All Events
+              All Events
             </a>
             {NAV_LINKS.slice(1).map((link) => (
               <a
